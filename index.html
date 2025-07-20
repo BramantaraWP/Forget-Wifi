@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- 🔍 SEO Meta -->
+  <title>ForgetWifi | Temukan Jaringan WiFi Gratis di Pekutatan</title>
+  <meta name="description" content="Temukan jaringan WiFi publik gratis di sekitar Pekutatan, Jembrana - Bali. Praktis, cepat, dan gratis. Buka ForgetWifi sekarang!" />
+  <meta name="keywords" content="wifi gratis pekutatan, hotspot pekutatan, wifi publik jembrana, wifi bali, free wifi map" />
+  <meta name="author" content="ForgetWifi Project" />
+  <meta name="robots" content="index, follow" />
+
+  <!-- 🌐 Open Graph untuk sosial media -->
+  <meta property="og:title" content="ForgetWifi | WiFi Gratis Pekutatan" />
+  <meta property="og:description" content="Lihat peta hotspot WiFi publik gratis di Pekutatan - Jembrana, Bali." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://forgetwifi.id/" />
+  <meta property="og:image" content="https://yourdomain.com/wifimap-thumb.jpg" /> <!-- ganti jika ada gambar -->
+
+  <!-- Leaflet CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      font-family: sans-serif;
+    }
+
+    header {
+      background: #1e90ff;
+      color: white;
+      padding: 2px 2px 2px 10px;
+    }
+
+    #map {
+      width: 100%;
+      height: calc(100vh - 60px); /* Biarkan space buat header */
+    }
+
+    .leaflet-popup-content-wrapper {
+      font-size: 14px;
+    }
+  </style>
+</head>
+<body>
+  <header><h3>ForgetWifi</h3></header>
+  <div id="map"></div>
+
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script>
+    const map = L.map('map').setView([-8.3817, 114.9393], 14);
+
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const wifiHotspots = [
+      {
+        nama: "Warung Lilik | Panji Motor",
+        koordinat: [-8.420709,114.826713],
+        keterangan: "Password: 19240709"
+      },
+      {
+        nama: "SDN 4 Pekutatan | Foursdaku",
+        koordinat: [-8.422730,114.824229],
+        keterangan: "Password: 4PEKUTATANBERANI"
+      },
+      {
+        nama: "Panji",
+        koordinat: [-8.420929,114.827882],
+        keterangan: "Password: Bedugull"
+      },
+      {
+        nama: "Toko Nila",
+        koordinat: [-8.422685,114.824911],
+        keterangan: "Password: 21045532"
+      },
+      {
+        nama: "Bale Panjar Pasar",
+        koordinat: [-8.421155,114.823011],
+        keterangan: "Password: 87654321"
+      },
+      {
+        nama: "KK Yogi",
+        koordinat: [-8.429031,114.823431],
+        keterangan: "Password: lontongtahu"
+      },
+      {
+        nama: "Koramil 04 Pekutatan",
+        koordinat: [-8.413569,114.825250],
+        keterangan: "Password: lupasandi311222"
+      },
+      {
+        nama: "Warung Hoky | Andora",
+        koordinat: [-8.422884,114.830745],
+        keterangan: "Password: SEPTIAN300999"
+      }
+    ];
+
+    wifiHotspots.forEach(wifi => {
+      L.marker(wifi.koordinat)
+        .addTo(map)
+        .bindPopup(`<strong>${wifi.nama}</strong><br>${wifi.keterangan}`);
+    });
+  </script>
+</body>
+</html>
